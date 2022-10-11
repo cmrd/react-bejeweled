@@ -14,4 +14,3 @@ Functionality:
 TODO/Future Improvements
 - Make a mobile version
 - Improve styling
-- Improve randomize-logic, as matches still occasionally occur on initialization of the board
