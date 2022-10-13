@@ -2,6 +2,8 @@
 
 A Project based on the Games Bejeweled and Candy Crush, created with the Javascript library React.js
 
+Play Desktop-Version here: https://reactjs-bejeweled.herokuapp.com/
+
 Functionality:
 - Create 8x8 board with random elements of 7 different colors
 - Further randomize elements before initializing board
