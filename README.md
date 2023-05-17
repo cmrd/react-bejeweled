@@ -203,7 +203,7 @@ dispatchJokerAction({ type: "BISHOP_UTILIZED" }) // Utilize Bishop
 // ...
 ```
 
-We pass to ```dispatchJokerAction``` the action that has occurred, for example selecting the rook joker ```{ type: "BISHOP_UTILIZED" }``` and that action is then passed (or "dispatched") to the ```handleState``` function which returns the state based on the ```type``` we provided. 
+We pass to ```dispatchJokerAction``` the action that has occurred, for example selecting the rook joker ```{ type: "ROOK_SELECTED" }``` and that action is then passed (or "dispatched") to the ```handleState``` function which returns the state based on the ```type``` we provided. 
 
 ### Creating and monitoring board and game over
 
