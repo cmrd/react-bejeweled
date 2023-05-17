@@ -1,0 +1,19 @@
+.headerPanel {
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    width: min(500px, 95vw, 95vh - 35%);
+    font-size: min(2.5vw, 2vh);
+    animation: fade-in-panel 500ms;
+}
+
+@keyframes fade-in-panel {
+    from {
+        opacity: 0;
+        width: 100px;
+    }
+
+    to {
+        width: min(500px, 95vw, 95vh - 35%);
+    }
+}

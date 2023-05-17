@@ -1,0 +1,34 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    aspect-ratio: 1 / 1;
+    justify-content: space-evenly;
+    width: min(500px, 95vw, 95vh - 35%);
+    padding: 5px;
+    background-color: rgba(60, 60, 60, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    animation: fade-in 500ms;
+}
+
+@keyframes fade-in {
+    from {
+        opacity:0;
+        width: 100px;
+        height: 100px;
+    }
+    to {
+        height: min(500px, 95vw, 95vh - 35%);
+    }
+}
+
+[gameover="true"] {
+    animation: blur-board 2s forwards;
+    pointer-events: none;
+}
+
+@keyframes blur-board {
+    to {
+        opacity: .2;
+    }
+}

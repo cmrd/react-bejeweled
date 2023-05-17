@@ -1,0 +1,22 @@
+.buttonPanelWrapper {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 70%;
+    background-color: rgba(60, 60, 60, 0.5);
+    border-radius: 10px;
+    padding: 2%;
+    margin: 1%;
+}
+
+.buttonPanel {
+    display: flex;
+    flex-wrap: nowrap;
+    align-self: flex-start;
+    justify-content: center;
+    width: 100%;
+}
+
+.jokerText {
+    align-self: center;
+}

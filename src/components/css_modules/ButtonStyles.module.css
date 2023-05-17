@@ -1,0 +1,17 @@
+.btn {
+    width: 25%;
+    margin: 1%;
+    aspect-ratio: 1 / 1;
+    border: 3px solid rgb(84, 0, 139);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+[status="selected"] {
+    border: 3px solid red;
+}

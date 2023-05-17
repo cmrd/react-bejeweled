@@ -1,0 +1,231 @@
+.element {
+    width: 90%;
+    height: 90%;
+    border: 5px solid rgba(86, 86, 86, 0.35);
+    border-left: 5px solid rgba(231, 231, 231, 0.35);
+    border-bottom: 5px solid rgba(231, 231, 231, 0.35);
+    border-radius: 10px;
+    place-self: center;
+    opacity: 0;
+    cursor: pointer;
+    animation: drop-elements 500ms forwards;
+    animation-delay: 500ms;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes drop-elements {
+    from {
+        transform: translateY(-20%);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.element:active {
+    width: 100%;
+    height: 100%;
+}
+
+[flag="removed"] {
+    border: 5px solid rgb(255, 255, 255) !important;
+}
+
+/* --- ELEMENT COLORS --- */
+
+.yellow {
+    background: rgb(252, 255, 91);
+}
+
+.green {
+    background: rgb(91, 255, 105);
+}
+
+.blue {
+    background: rgb(61, 74, 255);
+}
+
+.red {
+    background: rgb(255, 58, 58);
+}
+
+.orange {
+    background: rgb(255, 159, 80);
+}
+
+.purple {
+    background: rgb(225, 0, 255);
+}
+
+.pink {
+    background: rgb(255, 0, 166);
+}
+
+/* --- ADVANCED ELEMENTS --- */
+
+/* --- ADCANCED YELLOW ELEMENTS --- */
+
+[level="lv2_h"].yellow {
+    background-image: linear-gradient(0deg, rgb(252, 255, 91) 25%, #ffffff 25%, #ffffff 50%, rgb(252, 255, 91) 50%, rgb(252, 255, 91) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="lv2_v"].yellow {
+    background-image: linear-gradient(90deg, rgb(252, 255, 91) 25%, #ffffff 25%, #ffffff 50%, rgb(252, 255, 91) 50%, rgb(252, 255, 91) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="LT2"].yellow {
+    background-image: linear-gradient(45deg, rgb(252, 255, 91) 25%, #ffffff 25%, #ffffff 50%, rgb(252, 255, 91) 50%, rgb(252, 255, 91) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 50% 50%;
+}
+
+[level="LT1"].yellow {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(255, 255, 255) 40%, rgb(252, 255, 91) 40%, rgb(252, 255, 91) 60%, rgb(255, 255, 255) 60%);
+    border: none;
+}
+
+/* --- ADCANCED GREEN ELEMENTS --- */
+
+[level="lv2_h"].green {
+    background-image: linear-gradient(0deg, rgb(91, 255, 105) 25%, #ffffff 25%, #ffffff 50%, rgb(91, 255, 105) 50%, rgb(91, 255, 105) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="lv2_v"].green {
+    background-image: linear-gradient(90deg, rgb(91, 255, 105) 25%, #ffffff 25%, #ffffff 50%, rgb(91, 255, 105) 50%, rgb(91, 255, 105) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="LT2"].green {
+    background-image: linear-gradient(45deg, rgb(91, 255, 105) 25%, #ffffff 25%, #ffffff 50%, rgb(91, 255, 105) 50%, rgb(91, 255, 105) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 50% 50%;
+}
+
+[level="LT1"].green {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(255, 255, 255) 40%, rgb(91, 255, 105) 40%, rgb(91, 255, 105) 60%, rgb(255, 255, 255) 60%);
+    border: none;
+}
+
+/* --- ADCANCED BLUE ELEMENTS --- */
+
+[level="lv2_h"].blue {
+    background-image: linear-gradient(0deg, rgb(61, 74, 255) 25%, #ffffff 25%, #ffffff 50%, rgb(61, 74, 255) 50%, rgb(61, 74, 255) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="lv2_v"].blue {
+    background-image: linear-gradient(90deg, rgb(61, 74, 255) 25%, #ffffff 25%, #ffffff 50%, rgb(61, 74, 255) 50%, rgb(61, 74, 255) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="LT2"].blue {
+    background-image: linear-gradient(45deg, rgb(61, 74, 255) 25%, #ffffff 25%, #ffffff 50%, rgb(61, 74, 255) 50%, rgb(61, 74, 255) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 50% 50%;
+}
+
+[level="LT1"].blue {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(255, 255, 255) 40%, rgb(61, 74, 255) 40%, rgb(61, 74, 255) 60%, rgb(255, 255, 255) 60%);
+    border: none;
+}
+
+/* --- ADCANCED RED ELEMENTS --- */
+
+[level="lv2_h"].red {
+    background-image: linear-gradient(0deg, rgb(255, 58, 58) 25%, #ffffff 25%, #ffffff 50%, rgb(255, 58, 58) 50%, rgb(255, 58, 58) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="lv2_v"].red {
+    background-image: linear-gradient(90deg, rgb(255, 58, 58) 25%, #ffffff 25%, #ffffff 50%, rgb(255, 58, 58) 50%, rgb(255, 58, 58) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="LT2"].red {
+    background-image: linear-gradient(45deg, rgb(255, 58, 58) 25%, #ffffff 25%, #ffffff 50%, rgb(255, 58, 58) 50%, rgb(255, 58, 58) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 50% 50%;
+}
+
+[level="LT1"].red {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(255, 255, 255) 40%, rgb(255, 58, 58) 40%, rgb(255, 58, 58) 60%, rgb(255, 255, 255) 60%);
+    border: none;
+}
+
+/* --- ADVANCED ORANGE ELEMENTS --- */
+
+[level="lv2_h"].orange {
+    background-image: linear-gradient(0deg, #ff9f50 25%, #ffffff 25%, #ffffff 50%, #ff9f50 50%, #ff9f50 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="lv2_v"].orange {
+    background-image: linear-gradient(90deg, #ff9f50 25%, #ffffff 25%, #ffffff 50%, #ff9f50 50%, #ff9f50 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="LT2"].orange {
+    background-image: linear-gradient(45deg, #ff9f50 25%, #ffffff 25%, #ffffff 50%, #ff9f50 50%, #ff9f50 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 50% 50%;
+}
+
+[level="LT1"].orange {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(255, 255, 255) 40%, rgb(255, 159, 80) 40%, rgb(255, 159, 80) 60%, rgb(255, 255, 255) 60%);
+    border: none;
+}
+
+/* --- ADCANCED PURPLE ELEMENTS --- */
+
+[level="lv2_h"].purple {
+    background-image: linear-gradient(0deg, rgb(225, 0, 255) 25%, #ffffff 25%, #ffffff 50%, rgb(225, 0, 255) 50%, rgb(225, 0, 255) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="lv2_v"].purple {
+    background-image: linear-gradient(90deg, rgb(225, 0, 255) 25%, #ffffff 25%, #ffffff 50%, rgb(225, 0, 255) 50%, rgb(225, 0, 255) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="LT2"].purple {
+    background-image: linear-gradient(45deg, rgb(225, 0, 255) 25%, #ffffff 25%, #ffffff 50%, rgb(225, 0, 255) 50%, rgb(225, 0, 255) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 50% 50%;
+}
+
+[level="LT1"].purple {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(255, 255, 255) 40%, rgb(225, 0, 255) 40%, rgb(225, 0, 255) 60%, rgb(255, 255, 255) 60%);
+    border: none;
+}
+
+/* --- ADCANCED PINK ELEMENTS --- */
+
+[level="lv2_h"].pink {
+    background-image: linear-gradient(0deg, rgb(255, 0, 166) 25%, #ffffff 25%, #ffffff 50%, rgb(255, 0, 166) 50%, rgb(255, 0, 166) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="lv2_v"].pink {
+    background-image: linear-gradient(90deg, rgb(255, 0, 166) 25%, #ffffff 25%, #ffffff 50%, rgb(255, 0, 166) 50%, rgb(255, 0, 166) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 75% 75%;
+}
+
+[level="LT2"].pink {
+    background-image: linear-gradient(45deg, rgb(255, 0, 166) 25%, #ffffff 25%, #ffffff 50%, rgb(255, 0, 166) 50%, rgb(255, 0, 166) 75%, #ffffff 75%, #ffffff 100%);
+    background-size: 50% 50%;
+}
+
+[level="LT1"].pink {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(45deg, rgb(255, 255, 255) 40%, rgb(255, 0, 166) 40%, rgb(255, 0, 166) 60%, rgb(255, 255, 255) 60%);
+    border: none;
+}
+
+[level="lv3"] {
+    background-image: linear-gradient(45deg, #fff 12.50%, #ff0000 12.50%, #ff0000 25%, #000000 25%, #000000 37.50%, #4000ff 37.50%, #4000ff 50%, #fff 50%, #fff 62.50%, #ff0000 62.50%, #ff0000 75%, #000000 75%, #000000 87.50%, #4000ff 87.50%, #4000ff 100%);
+    background-size: 75% 75%;
+}

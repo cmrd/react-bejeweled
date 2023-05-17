@@ -1,0 +1,32 @@
+.GameWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(500px, 95vw, 66.5vh);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gameOverMsg {
+    position: absolute;
+    top: 30%;
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+    font-family: "JetBrains Mono", monospace;
+    font-size: min(22.5vw, 20vh - 150%);
+    color: rgb(84, 0, 139);
+    opacity: 0;
+    animation: fade-in-gameover-msg 3s forwards;
+
+    text-shadow: 3px 0 rgb(226, 182, 255), -3px 0 rgb(226, 182, 255), 0 3px rgb(226, 182, 255), 0 -3px rgb(226, 182, 255),
+             2px 2px rgb(226, 182, 255), -2px -2px rgb(226, 182, 255), 2px -2px rgb(226, 182, 255), -2px 2px rgb(226, 182, 255);
+}
+
+@keyframes fade-in-gameover-msg {
+    to {
+        opacity: 1;
+    }
+}
