@@ -126,7 +126,7 @@ const newArray = oldArray
 is not sufficient, as arrays are stored by reference. That means, even if ```newArray``` is manipulated, the value of ```oldArray``` is changed in the process, as the variables do not hold the value of the array but simply both point to the same location in memory, where the array is stored. As such, you need to save a copy of the old array using destructuring:
 
 ```Javascript
-const newArray = [...oldArray]
+let newArray = [...oldArray]
 ```
 
 In our case, it's a bit trickier. Our board is an array consisting of objects, as each element in itself contains multiple values, and objects themselves are stored by reference too. That means, even if we destructure our array as above, the objects inside the array will still keep their old reference. To change that, we need to make a deep copy of the array. This is best achieved by turning the entire array into a string with the ```JSON.stringify()``` method and parse it back into a Javascript-Object with ```JSON.parse()```
