@@ -111,7 +111,7 @@ It is strongly discouraged to change the state variable directly, so if you must
 state = "New State"
 
 // Good practice
-const currentState = state
+let currentState = state
 
 // Do some operations with the current state
 currentState = "Changing state..."
