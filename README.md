@@ -59,7 +59,7 @@ Take for example the following board:
 
 ![Game State 1](https://i.imgur.com/FVj5yXy.png)
 
-At the bottom of the board you can see a match of 3 elements of red color in a row, one of which is an element with horizontal red stripes. Utilizing an element with horizontal stripes results in all element of the row it is located in being removed. The row that is being removed in the process however, contains another advanced element: an element with vertical stripes which is being triggered in the process, removing in its turn all elements from the column it is located in. In that column however lies yet another element with diagonal stripes, which, upon being triggered, removes all elements adjacent to it. Adjacent to that element is yet another element with horizontal stripes, which removes all elements from the row it is located in. 
+At the bottom of the board you can see a match of 3 elements of red color in a row, one of which is an element with horizontal red stripes. Utilizing an element with horizontal stripes results in all of the elements of the row it is located in being removed. The row that is being removed in the process however, contains another advanced element: an element with vertical stripes which is being triggered in the process, removing in its turn all elements from the column it is located in. In that column however lies yet another element with diagonal stripes, which, upon being triggered, removes all elements adjacent to it. Adjacent to that element is yet another element with horizontal stripes, which removes all elements from the row it is located in. 
 
 The result looks as follows:
 
