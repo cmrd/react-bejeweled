@@ -360,4 +360,4 @@ What makes this approach great, is, that the Game component itself does not need
 ```Javascript
 const previousBoard = useRef(board)
 ```
-The ```useRef``` hook is used to create values that, upon changing, don't cause a rerender of the component. As this variable is only needed for the custom hook's internal workings, we don't need to provide it to the outside world. 
+The ```useRef``` hook is used to create values that persist between rerenders but upon changing, don't cause a rerender of the component. As this variable is only needed for the custom hook's internal workings, we don't need to provide it to the outside world. 
