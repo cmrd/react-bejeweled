@@ -67,7 +67,7 @@ The result looks as follows:
 
 (Note how the element with the diagonal stripes turns into a white element with a singular stripe as its second "layer")
 
-Capturing and triggering advanced elements is achieved via the ```handleInterceptedElements``` and the other helper functions inside ```handleAdvancedElements.js```. The ```handleInterceptedElements``` function adds advanced elements it captured to its internal array via the ```Array.prototype.concat()```, while the advanced elements that had been triggered in the process, are removed using the ```Array.prototype.splice()``` method. This process is encapsulated in a while-loop and continues until all elements have been removed from the array, indicating that all advanced elements that have been captured were triggered.
+Capturing and triggering advanced elements is achieved via the ```handleInterceptedElements``` and the other helper functions inside ```handleAdvancedElements.js```. The ```handleInterceptedElements``` function adds advanced elements it captured to its internal array via the ```Array.prototype.concat()```, while the advanced elements that had been triggered in the process, are removed using the ```Array.prototype.splice()``` function. This process is encapsulated in a while-loop and continues until all elements have been removed from the array, indicating that all advanced elements that have been captured were triggered.
 
 ### The Jokers
 
@@ -129,7 +129,7 @@ is not sufficient, as arrays are stored by reference. That means, even if ```new
 let newArray = [...oldArray]
 ```
 
-In our case, it's a bit trickier. Our board is an array consisting of objects, as each element in itself contains multiple values, and objects themselves are stored by reference too. That means, even if we destructure our array as above, the objects inside the array will still keep their old reference. To change that, we need to make a deep copy of the array. This is best achieved by turning the entire array into a string with the ```JSON.stringify()``` method and parse it back into a Javascript-Object with ```JSON.parse()```
+In our case, it's a bit trickier. Our board is an array consisting of objects, as each element in itself contains multiple values, and objects themselves are stored by reference too. That means, even if we destructure our array as above, the objects inside the array will still keep their old reference. To change that, we need to make a deep copy of the array. This is best achieved by turning the entire array into a string with the ```JSON.stringify()``` function and parse it back into a Javascript-Object with ```JSON.parse()```
 
 ```Javascript
 let currentBoard = JSON.parse(JSON.stringify(board))
@@ -261,3 +261,91 @@ const horizontalRanges = [
 ]
 ```
 As we traverse the elements in each direction, we keep track of the column and row the element is located in: ```verticalRanges[i][j]``` or ```horizontalRanges[i][j]```, where ```i``` is the column or row and ```j``` is the element within the respective column or row ```i```. If ```i``` either exceeds the length of the columns or rows range: ```i > 7``` indicating its end, or becomes less than 0, indicating that we reached the beginning of the columns or rows, depending on the direction we traverse, we stop traversing the respective direction. The exact implementation of each joker differs and can be viewed in the respective joker's file, ```utilizeBishop.js```, ```utilizeRook.js```, etc. 
+
+### useEffect
+The ```useEffect``` hook allows you to perform side effects that occur after a component has rendered and accepts two arguments, the first argument being the logic to be executed when the effect is triggered and the second, optional argument, being the dependency. 
+``` Javascript
+useEffect(() => {
+// Do some Stuff
+}, [dependency1, dependency2])
+```
+The array of dependencies determines, when the effect has to be run. There are 3 scenarios:
+1. Nothing is passed as a second parameter -> ```useEffect``` runs after every render
+2. An empty array [] is passed as a second parameter -> ```useEffect``` runs only on initial render
+3. An array of dependencies is passed -> ```useEffect``` is triggered, if one of the dependencies has changed between renders
+
+You can pass both variables and functions as dependencies. Be cautious however, when passing functions as dependencies. Functions are stored as objects internally, and as we've learned, objects are stored by reference. So if a component holding a function that is a dependency is rerendered, even if the "value" of the function has not changed, it is in fact an entirely new function stored at a different location in memory, which the useEffect interprets as an altered dependency, resulting in an endless loop. 
+
+One way to avoid this, is to wrap the function in a ```useCallback``` hook, which ensures, that the function is treated as the same object unless its value is changed.
+
+In our App, we use two useEffects, one to monitor changes on the board and perform subsequent operations, like detecting and removing matches and refilling the board, and one useEffect to monitor the board for potential moves, displaying the Game Over message in the case no more moves are possible. The operations for the first useEffect are wrapped in a ```setInterval()``` function, which allows the effect to be retriggered at a timeframe specified by us, in this case 100 milliseconds, to visually represent the effects on the board, e.g. elements being triggered, removed and dropped to refill the board at the specified timeframe. In this context, it is important to provide a clean up function, that is called inside the useEffect and cleans up the previous effect before the next side effect is triggered. 
+
+In our case:
+``` Javascript
+useEffect(() => {
+        const timer = setInterval(() => {
+
+            if (board.every(element => element.color !== "")) {
+
+                const [currentBoard, scoreAccumulator] = monitorMatches(board, previousBoard.current)
+                setBoard(currentBoard)
+                setScore(previousScore => previousScore + scoreAccumulator)
+
+            }
+            setBoard(prev => refillBoard(prev))
+        }, 100);
+
+        return () => clearInterval(timer)
+    }, [board, score])
+```
+At a timeframe of 100 milliseconds, the operations within useEffect are executed whenever changes on the board occur. A change can be the removal of elements, but also an element being moved down to refill empty spots every 100 milliseconds, resulting in a visual "dropping" effect.
+
+### Custom Hooks
+Custom Hooks allow to encapsulate reusable logic that performs specific tasks. Take, for example, the ```useGame``` Hook created for this game: 
+
+``` Javascript
+const useGame = () => {
+
+    const [board, setBoard] = useState(() => {
+        return JSON.parse(localStorage.getItem("board")) || generateBoard()
+    })
+
+    const [score, setScore] = useState(() => {
+        return JSON.parse(localStorage.getItem("score")) || 0
+    })
+
+    const previousBoard = useRef(board)
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+
+                localStorage.setItem("board", JSON.stringify(board))
+                localStorage.setItem("score", JSON.stringify(score))
+
+            if (board.every(element => element.color !== "")) {
+
+                const [currentBoard, scoreAccumulator] = monitorMatches(board, previousBoard.current)
+                setBoard(currentBoard)
+                setScore(previousScore => previousScore + scoreAccumulator)
+
+            }
+            setBoard(prev => refillBoard(prev))
+        }, 100);
+
+        return () => clearInterval(timer)
+    }, [board, score])
+
+    return [board, setBoard, score, setScore]
+}
+```
+Inside the useGame Hook, which really is just a function that starts with the lowercase word "use" followed by the name itself, to indicate that it's a hook, you are able to call and create other hooks. In our case, we create two separate states via the ```useState``` hook, which is the board, the score and functions to set their new state, and also perform the side effect as the board or score changes, while returning those values that are relevant to the outside world.
+
+Inside our Game component, we create the game state calling the ```useGame``` hook: 
+``` Javascript
+const [board, setBoard, score, setScore] = useGame()
+```
+What makes this approach great, is, that the Game component itself does not need to know about the inner workings of the custom hook, how the state for both board and score is exactly created and what side tasks and effects - be it calculations, monitoring, etc. - are performed, as it's not the Game component's concern. The logic is neatly encapsulated inside the custom hook, providing to the outside world - in this case the Game component - only the information necessary for it. Inside the custom hook you can see, that we also create a variable via the ```useRef``` hook:
+```Javascript
+const previousBoard = useRef(board)
+```
+The ```useRef``` hook is used to create values that, upon changing, don't cause a rerender of the component. As this variable is only needed for the custom hook's internal workings, we don't need to provide it to the outside world. 
