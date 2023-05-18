@@ -220,7 +220,7 @@ A valid move is defined as swapping two adjacent elements horizontally or vertic
 
 ![Valid Moves](https://i.imgur.com/2mdoTui.png)
 
-The problem however is, that, as the board internally consists of 64 consecutive elements that are visually represented by breaking them into a new row after every 8th element, the first element of the second row (9th element) follows after the last element of the firs row (1st element):
+The problem however is, that, as the board internally consists of 64 consecutive elements that are visually represented by breaking them into a new row after every 8th element, the first element of the second row (9th element) follows after the last element of the first row (1st element):
 
 ![Valid Move](https://i.imgur.com/RMP3ar1.png)
 
