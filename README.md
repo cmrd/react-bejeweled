@@ -274,9 +274,21 @@ The array of dependencies determines, when the effect has to be run. There are 3
 2. An empty array [] is passed as a second parameter -> ```useEffect``` runs only on initial render
 3. An array of dependencies is passed -> ```useEffect``` is triggered, if one of the dependencies has changed between renders
 
-You can pass both variables and functions as dependencies. Be cautious however, when passing functions as dependencies. Functions are stored as objects internally, and as we've learned, objects are stored by reference. So if a component holding a function that is a dependency is rerendered, even if the "value" of the function has not changed, it is in fact an entirely new function stored at a different location in memory, which the useEffect interprets as an altered dependency, resulting in an endless loop. 
+You can pass primitive values, functions and other forms of objects as dependencies. Be cautious however, when passing objects as dependencies. As we've learned, objects are stored by reference. So if the component holding an object that is passed as a dependency is rerendered, even if the "value" of the object hasn't changed, it is in fact an entirely new object stored at a different location in memory, which the useEffect interprets as an altered dependency, resulting in an endless loop. 
 
-One way to avoid this, is to wrap the function in a ```useCallback``` hook, which ensures, that the function is treated as the same object unless its value is changed.
+One way to avoid this, is to wrap functions that are dependencies in a ```useCallback``` hook, which ensures, that the function is treated as if unchanged unless its value is changed.
+
+``` Javascript
+const func = useCallback(() => {
+// ... 
+}, [])
+```
+For objects, you could use the ```useMemo``` hook instead:
+
+```Javascript
+const obj = useMemo(() => ({ key: "value" }), [])
+```
+The difference between ```useCallback``` and ```useMemo``` is, that ```useCallback``` memoizes the function itself, while ```useMemo``` memoizes only the result. 
 
 In our App, we use two useEffects, one to monitor changes on the board and perform subsequent operations, like detecting and removing matches and refilling the board, and one useEffect to monitor the board for potential moves, displaying the Game Over message in the case no more moves are possible. The operations for the first useEffect are wrapped in a ```setInterval()``` function, which allows the effect to be retriggered at a timeframe specified by us, in this case 100 milliseconds, to visually represent the effects on the board, e.g. elements being triggered, removed and dropped to refill the board at the specified timeframe. In this context, it is important to provide a clean up function, that is called inside the useEffect and cleans up the previous effect before the next side effect is triggered. 
 
