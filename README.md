@@ -5,7 +5,7 @@ This project uses the Javascript library React to implement a variation of the g
 Highlights:
 - Advanced game logic
 - Functionality the original games do not possess
-- Responsive design with great UX, UI tested on multiple devices
+- Responsive design with great UX, UI tested on multiple devices and browsers
 
 Completing this project allowed to obtain a deep understanding of the React library.
 
@@ -21,10 +21,10 @@ This game adapts to any screen dimension, resulting in a great user experience o
 
 ![Responsive Design](https://i.imgur.com/rN7vXp2.gif)  ![Responsive Design2](https://i.imgur.com/Ki0lrft.gif)
 
-The game was tested on the following devices:
-- Lenovo Thinkpad E15
-- Samsung Galaxy S22
-- iPhone 12 mini
+The game was tested on the following devices and browsers:
+- Lenovo Thinkpad E15 (Chrome, Firefox, Edge)
+- Samsung Galaxy S22 (Chrome)
+- iPhone 12 mini (Safari)
 
 The design of the respective components is split in CSS modules, that can be found within the components folder. 
 
