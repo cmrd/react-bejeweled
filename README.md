@@ -33,7 +33,7 @@ The game's state is saved to local storage after every move, resulting in persis
 
 ### How to play
 
-The game is presented as an 8x8 grid containing 7 different colors. By switching adjacent elements with each other to obtain 3 or more elements of the same color in a column and row, you obtain a match that is removed from the board, with the board being refilled with new colors in the process. 
+The game is presented as an 8x8 grid containing 7 different colors. By switching adjacent elements with each other to obtain 3 or more elements of the same color in a column and row, you obtain a match that is removed from the board, with the board being refilled with new colors in the process. Simply click on the elements you wish to select and swap. 
 
 ### Game logic
 
