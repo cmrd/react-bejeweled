@@ -1,4 +1,4 @@
-# Using React to create a game based on Bejeweled and Candy Crush
+## Using React to create a game based on Bejeweled and Candy Crush
 
 This project uses the Javascript library React to implement a variation of the games Bejeweled and Candy Crush.
 
